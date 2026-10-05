@@ -133,3 +133,12 @@ Verification before publication:
 - Desktop hero, project cards, and 320px mobile appearance were inspected. Browser warning/error logs were empty; JavaScript syntax and whitespace checks passed. No external dependencies or personal-content changes were introduced.
 
 Publish by normal commit/push to the existing homepage repository, then confirm the Pages revision and served assets. The old project-site redirect and the separate Ledger application require no change for this theme update.
+
+
+## User-provided original resume download — October 5, 2026
+
+Inspected the complete one-page PDF supplied by the user, extracted its text, and rendered the page for visual review. Its contact details match those already publicly displayed, and its portfolio URL is the current root homepage. Stored the PDF unchanged as resume.pdf (251,343 bytes); SHA-256 comparison confirmed byte-for-byte identity with the source. No re-export or resume-content editing was performed.
+
+Enabled the existing bilingual homepage download link, with a descriptive Wei-David-Dai-Resume.pdf filename. The English static link also remains available without JavaScript. Browser checks verified both language labels and the correct visible destination at 320px and 1280px, with no horizontal overflow or warning/error logs. A local HTTP request returned 200 with a valid PDF signature and the original bytes. JavaScript syntax and whitespace checks passed.
+
+The PDF still includes the old TOEFL entry, potentially ambiguous PFW degree wording, and does not include the previously confirmed Beijing Zhongheng Borui experience. The website's confirmed factual wording remains unchanged; revising the supplied resume is a separate follow-up. Publish through the existing homepage repository and verify the PDF's public response and byte identity after deployment.

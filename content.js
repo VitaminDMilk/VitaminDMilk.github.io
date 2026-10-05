@@ -8,7 +8,7 @@
      alt: { en: 'Application walkthrough', zh: '应用操作演示' } }
 */
 window.PORTFOLIO_CONFIG = {
-  resumeHref: '', // Add the real PDF, then set this to 'resume.pdf'.
+  resumeHref: 'resume.pdf', // User-provided original PDF; replace this file to update the resume.
   projects: {
     'ai-workspace': { github: '', demo: '', media: [] },
     'vdm-ledger': { github: '', demo: 'https://vdm-ledger.vercel.app/demo', media: [] },

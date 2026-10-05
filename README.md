@@ -11,6 +11,7 @@
 - `script.js`
 - `content.js`（新增，存放中英文内容和媒体配置）
 - `petal.png`（沿用原文件）
+- `.nojekyll`（按原生静态文件发布）
 - `demos/vdm-ledger/`（Ledger 免登录交互演示的完整目录）
 
 线上地址：[Wei (David) Dai — Portfolio](https://vitamindmilk.github.io/)。主站仓库为 `VitaminDMilk/VitaminDMilk.github.io`。GitHub Pages 从 `main` 分支根目录发布；提交并推送到该分支会触发站点更新。部署后确认 Pages 构建成功，以及线上 HTML、CSS、JavaScript 和图片与本地源码一致。

@@ -104,3 +104,15 @@ JavaScript syntax checks, all nine Ledger model tests, and whitespace checks pas
 ## Migration to free user-site URL — October 5, 2026
 
 The user approved the proposed `https://vitamindmilk.github.io/` migration, preserving the old project-site redirect and updating the Ledger return link. An authenticated API check confirmed that the user-site repository did not already exist. A new public repository was created for the same already-public portfolio; the existing repository and all Git history remain recoverable. The homepage has an explicit canonical URL and `.nojekyll` for the static site. The original desktop checkout remains the maintenance directory. New user-site deployment must be verified before publishing the old entry redirect.
+
+Migration verification completed:
+
+- User-site commit `3c2f079` deployed successfully. All 11 web assets at the new root returned HTTP 200 and matched local source after line-ending normalization (binary images matched byte-for-byte).
+- Legacy commit `1df8dca` deployed the homepage and local-demo redirects without deleting existing assets or Git history. Real browser navigation preserved query parameters and `#project-vdm-ledger`; the old local-demo route preserved `#transactions` and displayed 15 sample transactions at the new path. JavaScript-disabled refresh and visible fallback links are present.
+- A temporary harness executed both redirect scripts with query strings, UTF-8 encoded values, and fragments. All target URL assertions passed.
+- Ledger commit `a93887e` updated both return links. Lint, TypeScript, three public-route tests, production build, and the staged secret scan passed. Deployment succeeded on the existing Vercel project with explicit `--scope pocket-ledger2`.
+- Anonymous `/demo` returned 200 with the new backlink. The owner dashboard still redirected to login (307), and its export API still returned 401. The actual demo Back to portfolio link navigated to `https://vitamindmilk.github.io/#project-vdm-ledger`.
+- New-root browser checks confirmed the canonical URL, Chinese rendering, three project cards, an enabled animation control, no horizontal overflow in the current viewport, and no warning/error logs. Core UI code is unchanged from the previously validated responsive release.
+- Current desktop checkout's `origin` is the new homepage repository; `legacy` retains the old repository. Both migration commits preserve previous public history. The private Ledger repository remains separate.
+
+The active portfolio URL is `https://vitamindmilk.github.io/`.

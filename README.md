@@ -13,7 +13,7 @@
 - `petal.png`（沿用原文件）
 - `demos/vdm-ledger/`（Ledger 免登录交互演示的完整目录）
 
-线上地址：[Wei (David) Dai — Portfolio](https://vitamindmilk.github.io/HTML-Portfolio/)。GitHub Pages 已配置从 `main` 分支根目录发布；提交并推送到该分支会触发站点更新。部署后确认 Pages 构建成功，以及线上 HTML、CSS、JavaScript 和图片与本地源码一致。
+线上地址：[Wei (David) Dai — Portfolio](https://vitamindmilk.github.io/)。主站仓库为 `VitaminDMilk/VitaminDMilk.github.io`。GitHub Pages 从 `main` 分支根目录发布；提交并推送到该分支会触发站点更新。部署后确认 Pages 构建成功，以及线上 HTML、CSS、JavaScript 和图片与本地源码一致。
 
 旧会话使用的 `Apply-Portfolio.ps1` 不在当前仓库中，也不再需要。
 
@@ -67,7 +67,7 @@ demo 是可运行的功能子集，不是完整生产应用。它不调用银行
 
 首个媒体作为项目封面。点击封面或媒体按钮打开弹窗，支持翻页、视频播放、左右方向键与 Escape 关闭。已经到达首项或末项时，继续按方向键会保留当前媒体，不会重新加载或打断视频。未填写链接或媒体时，对应入口不显示；默认封面是项目主题排版，不是虚构产品截图。
 
-路径不要以 `/` 开头，否则在 `github.io/HTML-Portfolio/` 下容易定位到错误目录。视频使用浏览器支持的 MP4（H.264）或 WebM；图片优先 WebP/JPEG，建议宽度约 1600px。图片和视频保持适当体积，移动端更容易打开。
+项目媒体继续使用不带前导 `/` 的相对路径，便于本地预览和站点迁移。视频使用浏览器支持的 MP4（H.264）或 WebM；图片优先 WebP/JPEG，建议宽度约 1600px。图片和视频保持适当体积，移动端更容易打开。
 
 ### 各项目推荐展示材料
 
@@ -91,7 +91,9 @@ resumeHref: 'resume.pdf'
 
 ## 网址建议
 
-当前网址可以继续使用，内容质量比网址长短更重要。如果想免费缩短，GitHub 的用户主页仓库名应为 `VitaminDMilk.github.io`，对应 `https://vitamindmilk.github.io/`。这一规则已对照 [GitHub Pages 官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) 核实。已有用户主页时不要覆盖；迁移前保留旧站入口，避免简历链接失效。
+2026 年 10 月 5 日，用户选择免费主页地址 `https://vitamindmilk.github.io/`。新主页仓库承接完整源码与 Git 历史；原 `HTML-Portfolio` 仓库保留为旧网址跳转入口，导航锚点和查询参数随跳转保留。Ledger demo 的返回链接使用新主页。
+
+本地目录仍为 `C:\Users\david\Desktop\HTML-Portfolio`，无需搬动文件。`origin` 指向新主页仓库；`legacy` 指向原仓库。今后在当前目录正常提交并推送到 `origin` 即可更新主站，旧入口只在跳转规则变化时维护。
 
 以姓名命名的自有域名更适合长期使用，但本次没有查询可用性、购买域名、重命名仓库或修改 DNS。
 

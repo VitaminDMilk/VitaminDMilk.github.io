@@ -3,7 +3,8 @@
 const content = window.PORTFOLIO_CONTENT;
 const config = window.PORTFOLIO_CONFIG;
 let language = 'en';
-let theme = 'day';
+let theme = 'bright';
+const themes = ['bright', 'day', 'night', 'blush'];
 let gallery = null;
 let backgroundFrame = null;
 let startBackground = null;
@@ -129,9 +130,18 @@ function setLanguage(nextLanguage) {
   remember('language', language);
 }
 
+function initialTheme() {
+  const choice = recalled('theme-choice', '');
+  if (themes.includes(choice)) return choice;
+  // The previous default was also saved automatically. Keep explicit night/blush
+  // choices; upgrade an old automatic day default to the new bright theme.
+  const legacy = recalled('theme', '');
+  return ['night', 'blush'].includes(legacy) ? legacy : 'bright';
+}
+
 function setTheme(nextTheme) {
-  theme = ['day', 'night', 'blush'].includes(nextTheme) ? nextTheme : 'day';
-  document.body.classList.remove('theme-day', 'theme-night', 'theme-blush');
+  theme = themes.includes(nextTheme) ? nextTheme : 'bright';
+  document.body.classList.remove(...themes.map(value => `theme-${value}`));
   document.body.classList.add(`theme-${theme}`);
   document.querySelectorAll('[data-theme]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.theme === theme)));
   remember('theme', theme);
@@ -286,6 +296,10 @@ function initBackground() {
   const ratio = Math.min(window.devicePixelRatio || 1, 2);
   canvas.width = width * ratio; canvas.height = height * ratio;
   context.setTransform(ratio, 0, 0, ratio, 0, 0);
+  if (theme === 'bright') {
+    context.clearRect(0, 0, width, height);
+    return;
+  }
   // Restore the original site's particle types, counts, sizes, and velocities.
   const count = theme === 'night' ? 200 : theme === 'blush' ? 100 : 80;
   const items = Array.from({ length: count }, () => {
@@ -401,11 +415,14 @@ function closeGallery() {
 
 document.addEventListener('DOMContentLoaded', () => {
   setLanguage(recalled('language', 'en'));
-  setTheme(recalled('theme', 'day'));
+  setTheme(initialTheme());
   initPageEffects();
   document.getElementById('year').textContent = String(new Date().getFullYear());
   document.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
-  document.querySelectorAll('[data-theme]').forEach(button => button.addEventListener('click', () => setTheme(button.dataset.theme)));
+  document.querySelectorAll('[data-theme]').forEach(button => button.addEventListener('click', () => {
+    remember('theme-choice', button.dataset.theme);
+    setTheme(button.dataset.theme);
+  }));
   document.getElementById('toggle-animation').addEventListener('click', toggleAnimation);
   document.getElementById('projects').addEventListener('click', event => {
     const trigger = event.target.closest('[data-gallery]');

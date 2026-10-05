@@ -1,6 +1,6 @@
 # Wei (David) Dai — Portfolio
 
-面向工程岗位招聘的静态作品集：原生 HTML、CSS、JavaScript，无需构建或安装依赖。内容依据 `Codex_Personal_Website_Content_Brief.txt` 更新，支持完整中英文、三种主题、响应式布局与项目媒体展示。
+面向工程岗位招聘的静态作品集：原生 HTML、CSS、JavaScript，无需构建或安装依赖。内容依据 `Codex_Personal_Website_Content_Brief.txt` 更新，支持完整中英文、四种主题、响应式布局与项目媒体展示。
 
 ## 本地预览与部署
 
@@ -17,6 +17,12 @@
 线上地址：[Wei (David) Dai — Portfolio](https://vitamindmilk.github.io/)。主站仓库为 `VitaminDMilk/VitaminDMilk.github.io`。GitHub Pages 从 `main` 分支根目录发布；提交并推送到该分支会触发站点更新。部署后确认 Pages 构建成功，以及线上 HTML、CSS、JavaScript 和图片与本地源码一致。
 
 旧会话使用的 `Apply-Portfolio.ps1` 不在当前仓库中，也不再需要。
+
+## 颜色主题
+
+默认使用「明亮」主题：暖白背景、石墨灰文字、白色卡片、细边框和轻阴影。保留入场、悬停和阅读进度反馈，不显示彩色粒子或循环装饰动画。原日间、夜间和樱花主题及其 80 个气泡、200 个星点、100 片花瓣保持原样；动画开关与系统减少动态效果偏好仍然生效。禁用 JavaScript 时也显示完整英文与明亮主题。
+
+新访客以及之前保存为默认日间的浏览器改用明亮主题。旧版本没有区分默认日间与手动日间，因此这两类旧记录统一迁移；旧夜间和樱花选择保留。从本次更新起，用户手动选中的四种主题会单独记忆，刷新后继续使用。存储受限时仍能切换。
 
 ## 内容编辑
 

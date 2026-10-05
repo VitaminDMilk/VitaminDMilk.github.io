@@ -2,16 +2,17 @@
 :root {
   font-family: Inter, "Segoe UI", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
   color-scheme: light;
-  --bg: #edf7fc; --surface: rgb(255 255 255 / .88); --ink: #25343c; --muted: #566873;
-  --accent: #a34327; --accent-soft: #f4e7dc; --line: #c8dbe6; --panel: rgb(230 242 249 / .92); --panel-ink: #314c5c;
-  --shadow: 0 14px 40px rgb(31 36 22 / .05);
+  --bg: #faf9f6; --surface: #fff; --ink: #252525; --muted: #62615e;
+  --accent: #383a38; --accent-soft: #efeee9; --line: #e4e2dd; --panel: #fff; --panel-ink: #333;
+  --shadow: 0 2px 6px rgb(35 35 30 / .02), 0 16px 40px rgb(35 35 30 / .04);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.65; transition: background-color .2s, color .2s; }
-body.theme-day { background: linear-gradient(135deg, #e0f2f7, #f7fbff) fixed; }
+body.theme-bright { background: var(--bg); }
+body.theme-day { background: linear-gradient(135deg, #e0f2f7, #f7fbff) fixed; --bg: #edf7fc; --surface: rgb(255 255 255 / .88); --ink: #25343c; --muted: #566873; --accent: #a34327; --accent-soft: #f4e7dc; --line: #c8dbe6; --panel: rgb(230 242 249 / .92); --panel-ink: #314c5c; --shadow: 0 14px 40px rgb(31 36 22 / .05); }
 body.theme-night { color-scheme: dark; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364) fixed; --bg: #16313d; --surface: rgb(15 32 40 / .88); --ink: #f0f5f8; --muted: #b1c4cd; --accent: #ffc19e; --accent-soft: #283e48; --line: #486673; --panel: rgb(29 53 65 / .92); --panel-ink: #e3f0f5; --shadow: 0 14px 40px rgb(0 0 0 / .1); }
-body.theme-blush { background: linear-gradient(135deg, #ffe2e2, #ffafaf) fixed; --bg: #ffe2e2; --surface: rgb(255 249 247 / .88); --ink: #39252c; --muted: #725361; --accent: #963853; --accent-soft: #f4dfe5; --line: #daabb7; --panel: rgb(255 239 243 / .9); --panel-ink: #593140; }
+body.theme-blush { background: linear-gradient(135deg, #ffe2e2, #ffafaf) fixed; --bg: #ffe2e2; --surface: rgb(255 249 247 / .88); --ink: #39252c; --muted: #725361; --accent: #963853; --accent-soft: #f4dfe5; --line: #daabb7; --panel: rgb(255 239 243 / .9); --panel-ink: #593140; --shadow: 0 14px 40px rgb(31 36 22 / .05); }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 button { color: inherit; cursor: pointer; }
@@ -254,6 +255,25 @@ nav a[aria-current="location"]::after, nav a:hover::after, nav a:focus-visible::
 .effects-enabled .project-cover > :not(.media-open) { transition: transform .25s ease-out; transform: perspective(600px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); }
 .effects-enabled .project-card { transition: border-color .25s, box-shadow .25s; }
 .effects-enabled .project-card:hover, .effects-enabled .project-card:focus-within { border-color: var(--accent); box-shadow: 0 16px 36px color-mix(in srgb, var(--accent) 12%, transparent); }
+@media (max-width: 360px) {
+  .monogram { font-size: 25px; }
+  .preferences { gap: 3px; }
+  .language-switcher, .theme-switcher { gap: 2px; }
+  .language-switcher button { padding-inline: 5px; }
+  .theme-switcher { padding-left: 5px; }
+  .theme-switcher button, .animation-switcher button { min-width: 25px; padding-inline: 4px; }
+}
+/* The bright theme keeps entrance/hover feedback, with a quiet reading surface. */
+.theme-bright .project-cover { background: #f3f2ee; }
+.theme-bright .project-card:nth-child(2) .project-cover { background: #eeede8; }
+.theme-bright .project-card:nth-child(3) .project-cover { background: #f6f5f1; }
+.theme-bright.effects-enabled .focus-panel,
+.theme-bright.effects-enabled .status-dot,
+.theme-bright.effects-enabled .cover-top > span:last-child,
+.theme-bright.effects-enabled .project-cover::after,
+.theme-bright.effects-enabled .primary::after { animation: none; }
+.theme-bright.effects-enabled .project-cover::before,
+.theme-bright.effects-enabled .primary::after { display: none; }
 .page-hidden *, .page-hidden *::before, .page-hidden *::after { animation-play-state: paused !important; }
 .motion-paused { scroll-behavior: auto; }
 .motion-paused *, .motion-paused *::before, .motion-paused *::after { transition: none !important; }

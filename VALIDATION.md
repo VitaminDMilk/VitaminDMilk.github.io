@@ -116,3 +116,20 @@ Migration verification completed:
 - Current desktop checkout's `origin` is the new homepage repository; `legacy` retains the old repository. Both migration commits preserve previous public history. The private Ledger repository remains separate.
 
 The active portfolio URL is `https://vitamindmilk.github.io/`.
+
+
+## Bright default theme — October 5, 2026
+
+Added a fourth theme with warm-white background, graphite text, white panels, neutral project covers, fine borders, and subtle shadows. The static English HTML uses it by default as well. Hero/scroll entrance, hover feedback, navigation progress, and the manual motion switch remain available; the bright theme has no colored particles or recurring decorative animation. Original day/night/blush palettes, gradients, 80 bubbles / 200 stars / 100 petals, and particle scheduling remain intact. The favicon uses the new neutral accent.
+
+The old implementation saved its day default automatically. A separate explicit-choice preference now preserves every future manual theme choice; existing night/blush selections survive migration, while old day/default and invalid preferences adopt bright. Old automatic day and manually selected day cannot be distinguished, so both migrate once; selecting day again is remembered. Storage failure falls back safely.
+
+Verification before publication:
+
+- Actual browser checks covered all 56 combinations of four themes, English/Chinese, and 320, 375, 390, 768, 850, 1024, and 1440px. No horizontal overflow occurred; header height stayed within navigation scroll padding. A narrow-screen adjustment keeps the fourth theme control beside the brand at 320px.
+- Every theme and Chinese selection survived actual page reload. Pause survived reload; resume restored effects. The bright panel had no looping animation and project scan decoration was hidden. The existing three project cards and public Ledger demo link remained correct.
+- A temporary harness executed the real script with 10 preference/storage cases and checked original particle counts, day bubble radii, and bright canvas clearing with no particle frame scheduled.
+- Nine text/background pairs from the bright palette exceeded 4.5:1; the lowest measured ratio was 5.88:1. This checks those colors, not a claim of whole-site accessibility certification.
+- Desktop hero, project cards, and 320px mobile appearance were inspected. Browser warning/error logs were empty; JavaScript syntax and whitespace checks passed. No external dependencies or personal-content changes were introduced.
+
+Publish by normal commit/push to the existing homepage repository, then confirm the Pages revision and served assets. The old project-site redirect and the separate Ledger application require no change for this theme update.

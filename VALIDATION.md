@@ -163,3 +163,10 @@ Verification:
 - Actual pause survived reload; resuming restored the floating panel. Original background logic still uses the same single scheduler and capped pixel ratio. Both development labels, the public Ledger demo, and the visible resume action were checked. Browser warning/error logs, JavaScript syntax, and whitespace checks passed.
 
 Publish normally to the existing homepage repository and verify the served versioned assets and live UI. No new demo, fabricated project media, dependency, or backend change was introduced. This completes the requested visual refinement; further site work can wait until there are real project milestones to present.
+
+
+## Restore date-only project presentation — October 5, 2026
+
+At the user's explicit request, removed the additional In development / 开发中 badges from AI Workspace and Personal Smart Locker. Both projects retain their original Aug. 2026 – Present / 2026 年 8 月 – 至今 dates. Removed the unused status fields, rendering fragment, and badge CSS; synchronized the English static HTML. Existing descriptions, links, themes, motion, and resume remain unchanged. Updated the three asset version tags so returning visitors retrieve the corrected presentation.
+
+JavaScript syntax and whitespace checks passed. Verify both language renderings and publish normally to the existing homepage repository. This request supersedes the earlier choice to display extra project status badges.

@@ -76,7 +76,7 @@ function renderSections() {
       const href = safeURL(links[key]);
       return href ? `<a href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(ui[key])}</a>` : '';
     }).join('') + (getMedia(project.id).length ? `<button type="button" data-gallery="${project.id}">${escapeHTML(ui.gallery)}</button>` : '');
-    return `<article class="project-card" id="project-${project.id}">${projectCover(project, index)}<div class="project-copy"><p class="project-category">${escapeHTML(project.category)}</p><h3>${escapeHTML(project.name)}</h3><p class="project-subtitle">${escapeHTML(project.subtitle)}</p>${project.status ? `<p class="project-status">${escapeHTML(project.status)}</p>` : ''}<p class="project-date">${escapeHTML(project.date)}</p><p class="project-description">${escapeHTML(project.description)}</p>${list(project.tags, 'tags')}${list(project.bullets, 'project-highlights')}<div class="project-actions">${actions}</div></div></article>`;
+    return `<article class="project-card" id="project-${project.id}">${projectCover(project, index)}<div class="project-copy"><p class="project-category">${escapeHTML(project.category)}</p><h3>${escapeHTML(project.name)}</h3><p class="project-subtitle">${escapeHTML(project.subtitle)}</p><p class="project-date">${escapeHTML(project.date)}</p><p class="project-description">${escapeHTML(project.description)}</p>${list(project.tags, 'tags')}${list(project.bullets, 'project-highlights')}<div class="project-actions">${actions}</div></div></article>`;
   }).join('')}</div>`;
 
   const groups = [

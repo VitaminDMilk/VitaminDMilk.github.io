@@ -94,7 +94,7 @@ Ledger 展示使用模拟账户和交易数据。不要在公开截图中露出�
 resumeHref: 'resume.pdf'
 ```
 
-更新简历时直接替换 `resume.pdf`；下载名称为 `Wei-David-Dai-Resume.pdf`。如以后撤下简历，清空配置并同时隐藏 HTML 中的静态下载入口。
+更新简历时直接替换 `resume.pdf`；下载名称为 `Wei-David-Dai-Resume.pdf`。如以后撤下简历，清空配置并同时隐藏 HTML 中的静态下载入口。修改 `content.js` 配置后，同时更新 HTML 中该脚本 URL 的 `v` 版本标记，避免老访客继续使用缓存的旧配置。
 
 原 PDF 仍有旧 TOEFL 信息和 PFW 学位表述，且未列出北京中恒博瑞经历。网站正文继续沿用先前已确认的内容与准确教育表述，没有因下载附件而覆盖网页事实；这些差异留待用户选择修改简历时统一。
 

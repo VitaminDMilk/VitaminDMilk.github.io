@@ -76,7 +76,7 @@ function renderSections() {
       const href = safeURL(links[key]);
       return href ? `<a href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(ui[key])}</a>` : '';
     }).join('') + (getMedia(project.id).length ? `<button type="button" data-gallery="${project.id}">${escapeHTML(ui.gallery)}</button>` : '');
-    return `<article class="project-card" id="project-${project.id}">${projectCover(project, index)}<div class="project-copy"><p class="project-category">${escapeHTML(project.category)}</p><h3>${escapeHTML(project.name)}</h3><p class="project-subtitle">${escapeHTML(project.subtitle)}</p><p class="project-date">${escapeHTML(project.date)}</p><p class="project-description">${escapeHTML(project.description)}</p>${list(project.tags, 'tags')}${list(project.bullets, 'project-highlights')}<div class="project-actions">${actions}</div></div></article>`;
+    return `<article class="project-card" id="project-${project.id}">${projectCover(project, index)}<div class="project-copy"><p class="project-category">${escapeHTML(project.category)}</p><h3>${escapeHTML(project.name)}</h3><p class="project-subtitle">${escapeHTML(project.subtitle)}</p>${project.status ? `<p class="project-status">${escapeHTML(project.status)}</p>` : ''}<p class="project-date">${escapeHTML(project.date)}</p><p class="project-description">${escapeHTML(project.description)}</p>${list(project.tags, 'tags')}${list(project.bullets, 'project-highlights')}<div class="project-actions">${actions}</div></div></article>`;
   }).join('')}</div>`;
 
   const groups = [
@@ -284,6 +284,43 @@ function syncBackgroundAnimation() {
   if (animationEnabled() && !document.hidden && startBackground) startBackground();
 }
 
+function paintBrightBackground(context, width, height, items, phase, movement) {
+  const radius = Math.max(230, Math.min(width, height) * .64);
+  // Broad neutral light and visible orbital lines add depth without bright colors.
+  const lights = [
+    [width * .82 + Math.sin(phase) * 45, height * .27, radius, 'rgba(105, 126, 145, .17)'],
+    [width * .12, height * .83 + Math.cos(phase * .8) * 35, radius * .85, 'rgba(151, 143, 129, .12)']
+  ];
+  lights.forEach(([x, y, size, color]) => {
+    const light = context.createRadialGradient(x, y, 0, x, y, size);
+    light.addColorStop(0, color); light.addColorStop(1, 'rgba(255, 255, 255, 0)');
+    context.fillStyle = light; context.fillRect(x - size, y - size, size * 2, size * 2);
+  });
+  context.strokeStyle = 'rgba(94, 111, 126, .065)'; context.lineWidth = .7;
+  context.beginPath();
+  for (let x = 0; x < width; x += 64) { context.moveTo(x, 0); context.lineTo(x, height); }
+  for (let y = 0; y < height; y += 64) { context.moveTo(0, y); context.lineTo(width, y); }
+  context.stroke();
+  context.save();
+  context.translate(width * .79, height * .4);
+  context.rotate(-.38 + Math.sin(phase * .5) * .12);
+  for (let index = 0; index < 3; index++) {
+    const major = radius * (.62 + index * .2), minor = major * .58;
+    context.strokeStyle = 'rgba(89, 109, 126, .18)'; context.lineWidth = index === 1 ? 1.2 : .8;
+    context.beginPath(); context.ellipse(0, 0, major, minor, 0, 0, Math.PI * 2); context.stroke();
+    const angle = phase * (index % 2 ? -.7 : .8) + index * 2;
+    context.fillStyle = 'rgba(89, 109, 126, .55)';
+    context.beginPath(); context.arc(Math.cos(angle) * major, Math.sin(angle) * minor, 3, 0, Math.PI * 2); context.fill();
+  }
+  context.restore();
+  items.forEach(point => {
+    point.x = (point.x + point.vx * movement + width) % width;
+    point.y = (point.y + point.vy * movement + height) % height;
+    context.fillStyle = 'rgba(89, 109, 126, .34)';
+    context.beginPath(); context.arc(point.x, point.y, point.radius, 0, Math.PI * 2); context.fill();
+  });
+}
+
 function initBackground() {
   cancelAnimationFrame(backgroundFrame);
   backgroundFrame = null;
@@ -296,14 +333,12 @@ function initBackground() {
   const ratio = Math.min(window.devicePixelRatio || 1, 2);
   canvas.width = width * ratio; canvas.height = height * ratio;
   context.setTransform(ratio, 0, 0, ratio, 0, 0);
-  if (theme === 'bright') {
-    context.clearRect(0, 0, width, height);
-    return;
-  }
+  let brightPhase = 0;
   // Restore the original site's particle types, counts, sizes, and velocities.
-  const count = theme === 'night' ? 200 : theme === 'blush' ? 100 : 80;
+  const count = theme === 'bright' ? 14 : theme === 'night' ? 200 : theme === 'blush' ? 100 : 80;
   const items = Array.from({ length: count }, () => {
     const position = { x: Math.random() * width, y: Math.random() * height };
+    if (theme === 'bright') return { ...position, radius: 1.4 + Math.random() * 1.3, vx: (Math.random() - .5) * .55, vy: (Math.random() - .5) * .55 };
     if (theme === 'night') return { ...position, size: 1 + Math.random() * 2, blink: .02 + Math.random() * .05, alpha: Math.random() };
     if (theme === 'blush') return { ...position, size: 20 + Math.random() * 20, vx: Math.random() * .5 - .25, vy: Math.random() + .5, angle: Math.random() * Math.PI * 2, rotation: Math.random() * .02 - .01 };
     return { ...position, radius: 10 + Math.random() * 40, vx: (Math.random() - .5) * .5, vy: (Math.random() - .5) * .5 };
@@ -311,7 +346,10 @@ function initBackground() {
 
   function paint(movement) {
     context.clearRect(0, 0, width, height);
-    if (theme === 'night') {
+    if (theme === 'bright') {
+      brightPhase += movement * .003;
+      paintBrightBackground(context, width, height, items, brightPhase, movement);
+    } else if (theme === 'night') {
       context.fillStyle = '#fff';
       items.forEach(star => {
         star.alpha = Math.max(0, Math.min(1, star.alpha + star.blink * (Math.random() > .5 ? 1 : -1) * movement));

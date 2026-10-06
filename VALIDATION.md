@@ -145,3 +145,21 @@ The PDF still includes the old TOEFL entry, potentially ambiguous PFW degree wor
 
 
 Publication check: Pages built resume commit 9edc745 successfully, and the public PDF returned 200 with application/pdf and original bytes. Browser reload exposed an HTTP-cache issue: the new HTML was present, but the previous empty resume configuration was still cached, hiding the button. Versioned the content.js script URL to force retrieval of the updated configuration for returning visitors; verify this correction in the same browser session before reporting completion.
+
+
+## Unified theme icons and animated bright theme — October 5, 2026
+
+Following the user's feedback that the square icon looked inconsistent and the default theme felt too static, replaced all four theme glyphs with self-contained SVG icons sharing a 24px viewBox, 18px display size, and 1.6px rounded stroke. Bright uses a sun; day, night, and blush retain half-disc, moon, and flower meanings. Accessible names and pressed states remain on the buttons; SVGs are hidden from assistive technology.
+
+The bright canvas now renders two broad neutral light fields, a faint grid, three moving orbital markers and rings, and 14 drifting nodes. The light palette remains restrained. Restored the existing floating panel, status pulse, project-cover scanning/orbit, CTA sheen, and hover/entrance feedback for bright, with slower decoration speeds and neutral panel/cover gradients. Original day/night/blush particle types, counts, radii, colors, gradients, and scheduler behavior remain unchanged. Asset URL versions for HTML's stylesheet and both scripts prevent returning visitors from using older cached behavior.
+
+The user clarified that AI Workspace and Personal Smart Locker are not fully complete. Both now show localized In development / 开发中 badges, including in English static HTML; demo/source/media URLs remain empty. Previously confirmed component descriptions are retained, and the existing Ledger demo and resume remain available.
+
+Verification:
+
+- All 56 four-theme / two-language / seven-width layouts from 320 to 1440px passed without horizontal overflow; all four icons were present and sticky-header height stayed within navigation scroll padding. Desktop and 320px mobile visuals were inspected.
+- A temporary harness executed the actual script for 12 theme/motion combinations, preserving 80 original bubbles, 200 stars, and 100 petals. Bright contains three orbital markers plus 14 nodes and two light fields. Frame progression changed coordinates; pause/resume reused the same scene; hiding the page stopped scheduling.
+- Actual full-window screenshots showed changed pixels in a background-only region while running; two paused full-window screenshots were pixel-identical. The capture tool's clipped screenshots triggered viewport resizing and scene reinitialization, so final motion assertions used full-window captures and compared the background region afterward. This avoided confusing capture-induced resizing with animation.
+- Actual pause survived reload; resuming restored the floating panel. Original background logic still uses the same single scheduler and capped pixel ratio. Both development labels, the public Ledger demo, and the visible resume action were checked. Browser warning/error logs, JavaScript syntax, and whitespace checks passed.
+
+Publish normally to the existing homepage repository and verify the served versioned assets and live UI. No new demo, fabricated project media, dependency, or backend change was introduced. This completes the requested visual refinement; further site work can wait until there are real project milestones to present.

@@ -1,5 +1,11 @@
 # Pixel interests — generation record
 
+## Guitar correction — October 7, 2026
+
+The user clarified that the instrument is guitar. The earlier piano prompt below is historical and is superseded by this built-in image_gen prompt. The active assets are in `guitar/`; other scenes retain their existing files.
+
+Use case: stylized-concept. Asset type: transparent eight-frame pixel animation sprite sheet for a personal portfolio. Primary request: the same mini character PLAYING GUITAR. Input image 1 is the established pixel character style, proportions, clothes, and hair reference; replace the piano activity entirely with guitar. Input image 2 is the user's appearance reference only. Scene: the young East Asian man with short tousled dark hair sits on a small simple stool holding a natural warm-wood ACOUSTIC GUITAR across his lap. Black short-sleeve T-shirt, cream shorts, white socks, white/blue shoes. Left hand frets the neck, right hand strums over the sound hole. Full body, guitar headstock and stool visible. Style: match reference 1's retro pixel art, sharp chunky pixel clusters, stepped outlines, flat restrained colors, no glossy anime/chibi face, no photorealism. Layout: EXACT regular FOUR columns by TWO rows, eight equal-sized cells, read left to right then top to bottom. Eight consecutive playing phases: ready chord; right hand raises; down-strum; hand follows through; up-strum; slight head nod; another gentle down-strum; return to first posture. Same identity, camera, instrument shape, body scale and floor baseline in all frames. Character centered in each cell with at least 24 pixels transparent margin around every scene; absolutely no art spilling across cell boundaries. Real alpha TRANSPARENT background, including all gutters. No piano, keyboard, desk, laptop, other people, text, frame borders, labels, music notes, logos or watermarks.
+
 Mode: built-in image_gen, with transparent image requests. Reference photographs and two motion contact sheets provided subject/outfit/action guidance. Illustrations do not document real travel destinations or claim unprovided photos. Golf uses the selected pixel version from the prior comparison.
 
 ## travel

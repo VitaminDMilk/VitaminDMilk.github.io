@@ -190,3 +190,9 @@ Verification performed on the actual local page:
 - Existing project date-only presentation, Ledger demo link, resume, and original day/night/blush background implementations remain in place. Updated all stylesheet/script version markers for returning visitors.
 
 Publish through the existing homepage repository and verify the built revision, served assets, and live interests UI before reporting deployment complete.
+
+## Guitar correction — October 7, 2026
+
+The user clarified that the instrument is guitar. Replaced the piano scene with a newly generated eight-frame acoustic-guitar scene, updated both language labels and the static English fallback, and refreshed the asset version markers. Earlier piano references in this validation record are historical. The other ten scenes are unchanged. All eleven active standalone GIFs are stored in assets/interests/<id>/animation.gif and tracked in the homepage repository; superseded piano assets remain recoverable from Git history.
+
+Verified asset configuration and JavaScript syntax, eight guitar GIF frames with looping metadata and transparency, and both language labels on the actual local page. At 1280px and 320px, the guitar canvas loaded, click and Enter restarted playback, and there was no horizontal overflow. Browser warning/error logs were empty. The existing shared animation scheduler and other site functions were not modified. Publish and verify the served revision and media before reporting completion.

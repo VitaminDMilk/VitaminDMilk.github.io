@@ -237,14 +237,14 @@ window.PORTFOLIO_INTERESTS = [
     ]
   },
   {
-    "id": "piano",
+    "id": "guitar",
     "name": {
-      "en": "Playing piano",
-      "zh": "弹琴"
+      "en": "Playing guitar",
+      "zh": "弹吉他"
     },
-    "sprite": "assets/interests/piano/sprite.png",
-    "poster": "assets/interests/piano/poster.png",
-    "gif": "assets/interests/piano/animation.gif",
+    "sprite": "assets/interests/guitar/sprite.png",
+    "poster": "assets/interests/guitar/poster.png",
+    "gif": "assets/interests/guitar/animation.gif",
     "cols": 4,
     "rows": 2,
     "durations": [

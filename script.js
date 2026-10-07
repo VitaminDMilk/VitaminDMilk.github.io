@@ -38,6 +38,10 @@ function localized(value, fallback = '') {
 }
 
 function getMedia(id) {
+  if (id.startsWith('interest-')) {
+    const item = window.PORTFOLIO_INTERESTS.find(item => item.id === id.slice(9));
+    return item?.photo ? [{ type: 'image', src: item.photo, alt: item.alt }] : [];
+  }
   return (config.projects[id]?.media || []).filter(item => ['image', 'video'].includes(item.type) && safeURL(item.src));
 }
 
@@ -122,6 +126,7 @@ function setLanguage(nextLanguage) {
     ? '戴维（Wei / David Dai）— 弗吉尼亚理工大学计算机工程学生。C++ 软件、嵌入式系统、全栈应用与 AI 感知项目。'
     : 'Wei (David) Dai — Computer Engineering student at Virginia Tech. C++ software, embedded systems, full-stack applications, and AI perception.';
   renderSections();
+  window.PortfolioHobbies.render(language, animationEnabled);
   syncPageEffects();
   const resume = document.getElementById('download');
   const resumeURL = safeURL(config.resumeHref);
@@ -196,6 +201,7 @@ function clearTilt() {
 }
 
 function syncPageEffects() {
+  window.PortfolioHobbies?.sync();
   clearTilt();
   const enabled = effectsEnabled();
   document.body.classList.toggle('effects-enabled', enabled);
@@ -209,7 +215,7 @@ function syncPageEffects() {
   }
   const hero = document.querySelectorAll('.hero .eyebrow, .hero h1, .hero-tagline, .hero-location, .hero-actions, .focus-panel');
   hero.forEach((element, index) => animateEntrance(element, index * 70));
-  const sections = document.querySelectorAll('.about-section, .section-heading, .experience-entry, .project-card, .skill-group, .education-card, .leadership-card, .contact-section');
+  const sections = document.querySelectorAll('.about-section, .section-heading, .experience-entry, .project-card, .skill-group, .education-card, .leadership-card, .hobby-card, .contact-section');
   if (!('IntersectionObserver' in window)) return;
   revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -429,10 +435,12 @@ function renderGallery() {
 }
 
 function openGallery(id) {
-  const project = content[language].projects.find(item => item.id === id);
+  const project = id.startsWith('interest-')
+    ? window.PORTFOLIO_INTERESTS.find(item => item.id === id.slice(9))
+    : content[language].projects.find(item => item.id === id);
   const media = getMedia(id);
   if (!project || !media.length) return;
-  gallery = { media, index: 0, name: project.name };
+  gallery = { media, index: 0, name: localized(project.name) };
   renderGallery();
   document.getElementById('media-dialog').showModal();
 }
@@ -466,6 +474,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const trigger = event.target.closest('[data-gallery]');
     if (trigger) openGallery(trigger.dataset.gallery);
   });
+  document.getElementById('interests').addEventListener('click', event => {
+    const trigger = event.target.closest('[data-interest-photo]');
+    if (trigger) { event.preventDefault(); openGallery(`interest-${trigger.dataset.interestPhoto}`); }
+  });
   const dialog = document.getElementById('media-dialog');
   document.getElementById('close-media').addEventListener('click', closeGallery);
   document.getElementById('previous-media').addEventListener('click', () => moveGallery(-1));
@@ -484,6 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let resizeTimer;
   window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(initBackground, 120); });
   document.addEventListener('visibilitychange', () => {
+    window.PortfolioHobbies.sync();
     syncBackgroundAnimation();
     document.body.classList.toggle('page-hidden', document.hidden);
     if (document.hidden) clearTilt();

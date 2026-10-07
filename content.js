@@ -15,6 +15,294 @@ window.PORTFOLIO_CONFIG = {
     'smart-locker': { github: '', demo: '', media: [] }
   }
 };
+// Personal interests confirmed by the user; illustrations are separate from real photographs.
+window.PORTFOLIO_INTERESTS = [
+  {
+    "id": "golf",
+    "name": {
+      "en": "Golf",
+      "zh": "高尔夫"
+    },
+    "photo": "assets/interests/golf/photo.webp",
+    "alt": {
+      "en": "David preparing a golf swing at a driving range",
+      "zh": "David 在高尔夫练习场准备挥杆"
+    },
+    "sprite": "assets/interests/golf/sprite.png",
+    "poster": "assets/interests/golf/poster.png",
+    "gif": "assets/interests/golf/animation.gif",
+    "cols": 4,
+    "rows": 4,
+    "durations": [
+      450,
+      180,
+      160,
+      140,
+      140,
+      160,
+      80,
+      70,
+      90,
+      120,
+      160,
+      260,
+      450,
+      220,
+      250,
+      450
+    ]
+  },
+  {
+    "id": "travel",
+    "name": {
+      "en": "Travel",
+      "zh": "旅行"
+    },
+    "photo": "assets/interests/travel/photo.webp",
+    "alt": {
+      "en": "A travel moment with matcha ice cream",
+      "zh": "旅行途中拍下的抹茶冰淇淋"
+    },
+    "sprite": "assets/interests/travel/sprite.png",
+    "poster": "assets/interests/travel/poster.png",
+    "gif": "assets/interests/travel/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  },
+  {
+    "id": "cycling",
+    "name": {
+      "en": "Road cycling",
+      "zh": "公路骑行"
+    },
+    "photo": "assets/interests/cycling/photo.webp",
+    "alt": {
+      "en": "David riding a road bicycle",
+      "zh": "David 骑公路自行车"
+    },
+    "sprite": "assets/interests/cycling/sprite.png",
+    "poster": "assets/interests/cycling/poster.png",
+    "gif": "assets/interests/cycling/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  },
+  {
+    "id": "cooking",
+    "name": {
+      "en": "Cooking & baking",
+      "zh": "烹饪与烘焙"
+    },
+    "photo": "assets/interests/cooking/photo.webp",
+    "alt": {
+      "en": "A baked cheesecake shared by David",
+      "zh": "David 提供的烘焙蛋糕照片"
+    },
+    "sprite": "assets/interests/cooking/sprite.png",
+    "poster": "assets/interests/cooking/poster.png",
+    "gif": "assets/interests/cooking/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  },
+  {
+    "id": "climbing",
+    "name": {
+      "en": "Bouldering",
+      "zh": "攀岩 / 抱石"
+    },
+    "photo": "assets/interests/climbing/photo.webp",
+    "alt": {
+      "en": "David climbing an indoor bouldering wall",
+      "zh": "David 在室内抱石墙上攀爬"
+    },
+    "sprite": "assets/interests/climbing/sprite.png",
+    "poster": "assets/interests/climbing/poster.png",
+    "gif": "assets/interests/climbing/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  },
+  {
+    "id": "basketball",
+    "name": {
+      "en": "Basketball",
+      "zh": "篮球"
+    },
+    "photo": "assets/interests/basketball/photo.webp",
+    "alt": {
+      "en": "David dribbling on a basketball court",
+      "zh": "David 在篮球场上运球"
+    },
+    "sprite": "assets/interests/basketball/sprite.png",
+    "poster": "assets/interests/basketball/poster.png",
+    "gif": "assets/interests/basketball/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  },
+  {
+    "id": "snowboarding",
+    "name": {
+      "en": "Snowboarding",
+      "zh": "单板滑雪"
+    },
+    "photo": "assets/interests/snowboarding/photo.webp",
+    "alt": {
+      "en": "David snowboarding on a snowy slope",
+      "zh": "David 在雪道上滑单板"
+    },
+    "sprite": "assets/interests/snowboarding/sprite.png",
+    "poster": "assets/interests/snowboarding/poster.png",
+    "gif": "assets/interests/snowboarding/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  },
+  {
+    "id": "swimming",
+    "name": {
+      "en": "Swimming",
+      "zh": "游泳"
+    },
+    "sprite": "assets/interests/swimming/sprite.png",
+    "poster": "assets/interests/swimming/poster.png",
+    "gif": "assets/interests/swimming/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  },
+  {
+    "id": "piano",
+    "name": {
+      "en": "Playing piano",
+      "zh": "弹琴"
+    },
+    "sprite": "assets/interests/piano/sprite.png",
+    "poster": "assets/interests/piano/poster.png",
+    "gif": "assets/interests/piano/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  },
+  {
+    "id": "gaming",
+    "name": {
+      "en": "Computer games",
+      "zh": "电脑游戏"
+    },
+    "sprite": "assets/interests/gaming/sprite.png",
+    "poster": "assets/interests/gaming/poster.png",
+    "gif": "assets/interests/gaming/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  },
+  {
+    "id": "music",
+    "name": {
+      "en": "Listening to music",
+      "zh": "听音乐"
+    },
+    "sprite": "assets/interests/music/sprite.png",
+    "poster": "assets/interests/music/poster.png",
+    "gif": "assets/interests/music/animation.gif",
+    "cols": 4,
+    "rows": 2,
+    "durations": [
+      360,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      360
+    ]
+  }
+];
 window.PORTFOLIO_CONTENT = {
   en: {
     ui: {

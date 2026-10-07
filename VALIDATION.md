@@ -170,3 +170,23 @@ Publish normally to the existing homepage repository and verify the served versi
 At the user's explicit request, removed the additional In development / 开发中 badges from AI Workspace and Personal Smart Locker. Both projects retain their original Aug. 2026 – Present / 2026 年 8 月 – 至今 dates. Removed the unused status fields, rendering fragment, and badge CSS; synchronized the English static HTML. Existing descriptions, links, themes, motion, and resume remain unchanged. Updated the three asset version tags so returning visitors retrieve the corrected presentation.
 
 JavaScript syntax and whitespace checks passed. Verify both language renderings and publish normally to the existing homepage repository. This request supersedes the earlier choice to display extra project status badges.
+
+## Pixel interests section — October 7, 2026
+
+Added 06 / Interests between Leadership and Contact using the user's confirmed hobby list, seven real photographs, and two supplied videos as motion references. Eleven scenes cover golf, travel, road cycling, cooking/baking, bouldering, basketball, snowboarding, swimming, piano, computer games, and listening to music. Four hobbies without photographs use illustrations only. All generated bitmap assets were produced with built-in image_gen; prompt and refinement records are in assets/interests/GENERATION.md. Travel's route is illustrative, and the snow scene uses a snowboard matching the supplied media. Reference videos and private filesystem paths are not published.
+
+Every scene has a transparent sprite atlas, static poster, and standalone looping GIF. Photographs are resized WebP exports without camera metadata; originals remain untouched. The website plays the atlases through one shared scheduler, loads them near the viewport, redraws only when a pose changes, and pauses offscreen/hidden-page players. Clicking or keyboard activation restarts at frame zero and then continues looping. Global animation pause preserves the current frame, including across language/theme changes; while paused, replay resets to the first pose. Fresh visitors who prefer reduced motion receive static scenes. Language changes disconnect old observers and players. Photo enlargement reuses the existing dialog with Escape and native focus restoration.
+
+Verification performed on the actual local page:
+
+- 24 language/theme/viewport combinations: English and Chinese, all four themes, widths 320/768/1440px, with no horizontal overflow, 11 cards, seven photo links, and nonempty localized headings.
+- After refining the last-row layout, repeated the six language/width checks; four small illustrated cards fill the area beside the snowboarding photograph on desktop. Inspected desktop and phone layouts and corrected the small-avatar sizing to prevent clipping.
+- All 11 atlases loaded on demand; all 11 replay controls returned to frame zero. Enter activated replay as well.
+- Live frame values advanced while enabled. Paused frame values remained identical across separate observations; resuming advanced them again. Offscreen scenes did not run.
+- Enlarged the real golf photo; closing the dialog restored focus to its photo link.
+- Tested a fresh origin with emulated reduced motion: bright theme, animation disabled, every pose at zero. With script execution disabled, all 11 English cards, seven photographs, 11 static posters, photo destinations, and the existing resume link remained available.
+- GIF inspection confirmed 16 golf frames and eight frames for each other hobby, matching configured durations, loop metadata, and transparent exported atlases.
+- JavaScript syntax and whitespace checks passed; browser warning/error logs were empty. Existing Ledger calculation/export tests passed: nine tests.
+- Existing project date-only presentation, Ledger demo link, resume, and original day/night/blush background implementations remain in place. Updated all stylesheet/script version markers for returning visitors.
+
+Publish through the existing homepage repository and verify the built revision, served assets, and live interests UI before reporting deployment complete.

@@ -196,3 +196,20 @@ Publish through the existing homepage repository and verify the built revision, 
 The user clarified that the instrument is guitar. Replaced the piano scene with a newly generated eight-frame acoustic-guitar scene, updated both language labels and the static English fallback, and refreshed the asset version markers. Earlier piano references in this validation record are historical. The other ten scenes are unchanged. All eleven active standalone GIFs are stored in assets/interests/<id>/animation.gif and tracked in the homepage repository; superseded piano assets remain recoverable from Git history.
 
 Verified asset configuration and JavaScript syntax, eight guitar GIF frames with looping metadata and transparency, and both language labels on the actual local page. At 1280px and 320px, the guitar canvas loaded, click and Enter restarted playback, and there was no horizontal overflow. Browser warning/error logs were empty. The existing shared animation scheduler and other site functions were not modified. Publish and verify the served revision and media before reporting completion.
+
+## Floating workstation homepage release — October 7, 2026
+
+The user approved publishing the refined workstation preview. Promoted the complete page into `index.html`, with production `workstation.css` and `workstation.js`. The homepage now uses the enlarged three-direction controls, native floating laptop, and coordinated Bright, Day, Night, and Blush palettes. Removed preview comparison links and concept labels, restored the root canonical URL, and removed the preview's noindex directive. Refreshed all homepage stylesheet and script version markers for returning visitors.
+
+The shared background controller accepts the workstation scene's bubble painter. Original particle counts, sizes, velocities, star blinking, flower rotation, pause preference, and animation lifecycle remain intact: 80 blue bubbles, 200 stars, and 100 flowers using the original `petal.png`. Day bubbles have glass highlights; Blush flowers use reduced color saturation. Bright remains the default. The production scene is scoped to `workstation-home`.
+
+Release checks used the actual production homepage:
+
+- 24 language/theme/width combinations: EN and Chinese, all four themes, and 320/768/1440px viewports. Per-tab device emulation was verified by measured client widths of 305/753/1425px, allowing for the scrollbar. All had no horizontal overflow, no failed loaded images, three projects, eleven interests, accessible control sizes, and no overlap between controls and the laptop. Final corrections confined the phone introduction's soft light within the page and added desktop clearance for the floating laptop.
+- All 32 local HTML resource references exist; all 12 internal anchor references resolve; IDs are unique. The production page has the root canonical, no noindex directive, and no preview-only links or local server addresses.
+- SHA-256 comparisons confirmed that 54 existing files, including content, base styles, resume, Ledger demo, photographs, sprite atlases, and GIFs, were unchanged.
+- ArrowRight selected Embedded systems, exposed only its matching screen, and pointed the related link to Personal Smart Locker.
+- Reduced motion paused the visible scene. With JavaScript disabled, the English page, three projects, eleven interests, static laptop, and resume link remained available.
+- Browser warnings and errors were empty. Both changed JavaScript files passed syntax checks; whitespace checks passed.
+
+Publish to the existing `main` branch and confirm the GitHub Pages workflow for that commit, served production bytes, and the live UI before reporting deployment complete. Earlier ocean and workstation concept files remain local working drafts and are not part of this release.

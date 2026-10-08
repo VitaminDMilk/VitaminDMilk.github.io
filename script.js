@@ -349,6 +349,11 @@ function initBackground() {
     if (theme === 'blush') return { ...position, size: 20 + Math.random() * 20, vx: Math.random() * .5 - .25, vy: Math.random() + .5, angle: Math.random() * Math.PI * 2, rotation: Math.random() * .02 - .01 };
     return { ...position, radius: 10 + Math.random() * 40, vx: (Math.random() - .5) * .5, vy: (Math.random() - .5) * .5 };
   });
+  // Workstation pages refine the bubble material while retaining the same
+  // particle geometry and animation lifecycle.
+  const sceneBubblePainter = document.body.matches('.workstation-home, .system-preview')
+    && typeof window.PortfolioSceneEffects?.paintBubble === 'function'
+    ? window.PortfolioSceneEffects.paintBubble : null;
 
   function paint(movement) {
     context.clearRect(0, 0, width, height);
@@ -382,7 +387,8 @@ function initBackground() {
     } else {
       context.fillStyle = 'rgba(100, 149, 237, 0.3)';
       items.forEach(bubble => {
-        context.beginPath(); context.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2); context.fill();
+        if (sceneBubblePainter) sceneBubblePainter(context,bubble);
+        else { context.beginPath(); context.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2); context.fill(); }
         bubble.x += bubble.vx * movement; bubble.y += bubble.vy * movement;
         if (bubble.x - bubble.radius > width) bubble.x = -bubble.radius;
         if (bubble.x + bubble.radius < 0) bubble.x = width + bubble.radius;
